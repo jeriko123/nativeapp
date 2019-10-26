@@ -1,1 +1,1 @@
-# blank expo nativ eapp
+# blank expo native app
