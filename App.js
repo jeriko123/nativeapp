@@ -5,21 +5,15 @@ import GoalInput from './components/GoalInput';
 
 
 export default function App() {
-  const [enteredGoal, setEnteredGoal] = useState('');
   const [goals, setGoals] = useState([]);
 
-
-  const onChangeInput = enteredText => {
-    setEnteredGoal(enteredText);
-  };
-
-  const onPressAdd = () => {
-    setGoals(currentgoals => [...currentgoals, { key: Math.random().toString(), value: enteredGoal}])
+  const onPressAdd = goalItem => {
+    setGoals(currentgoals => [...currentgoals, { key: Math.random().toString(), value: goalItem}])
   }
 
   return (
     <View style={styles.screen}>
-      <GoalInput onPress={onPressAdd} onChange={onChangeInput} />
+      <GoalInput onPress={onPressAdd} />
       <FlatList data={goals}
         renderItem={itemData =><GoalItem title={itemData.item.value} />} 
         />
