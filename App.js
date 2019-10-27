@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
+  const [enteredGoal, setEnteredGoal] = useState('');
+  const [goals, setGoals] = useState([]);
+
+  const onChangeInput = enteredText => {
+    setEnteredGoal(enteredText);
+  };
+
+  const onPressAdd = () => {
+    setGoals(currentgoals => [...currentgoals, enteredGoal])
+  }
 
   return (
     <View style={styles.screen}>
@@ -9,11 +19,12 @@ export default function App() {
         <TextInput
           placeholder="Course goal"
           style={styles.textInput}
+          onChangeText={onChangeInput}
         />
-        <Button title="add" />
+        <Button title="add" onPress={onPressAdd}/>
       </View>
       <View>
-
+        {goals.map((goal) => <Text>{goal}</Text>)}
       </View>
     </View>
   );
@@ -21,7 +32,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 50
+    padding: 70
   },
   viewInputArea: {
     flexDirection: "row",
