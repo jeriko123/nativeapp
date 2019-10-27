@@ -1,22 +1,38 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
-  const [outputText, setOutputText] = useState('Open up App.js to start working on your app!')
+
   return (
-    <View style={styles.container}>
-      <Text>{outputText}</Text>
-      <Button title="Change it" onPress={() => setOutputText("The text changed")}/> 
-      <Button title="Change it back" onPress={() => setOutputText("Open up App.js to start working on your app!")}/>
+    <View style={styles.screen}>
+      <View style={styles.viewInputArea}>
+        <TextInput
+          placeholder="Course goal"
+          style={styles.textInput}
+        />
+        <Button title="add" />
+      </View>
+      <View>
+
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  screen: {
+    padding: 50
   },
-});
+  viewInputArea: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  textInput: {
+    width: "70%",
+    borderColor: "black", 
+    borderWidth: 1, 
+    padding: 5
+  }
+
+})
