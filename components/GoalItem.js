@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const GoalItem = porps => {
+const GoalItem = props => {
     return (
-        <View style={styles.lineStyle}>
-            <Text>{porps.title}</Text>
-          </View>
+        <TouchableOpacity  activeOpacity={0.7} onPress={props.onDelete.bind(this, props.item.key)}>
+            <View style={styles.lineStyle}>
+                <Text>{props.item.value}</Text>
+            </View>
+        </TouchableOpacity>
     )
 };
 
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black',
         borderRadius: 5
-      }           
+    }
 })
 
 export default GoalItem;
