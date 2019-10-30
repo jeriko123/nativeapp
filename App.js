@@ -8,9 +8,11 @@ import GoalInput from './components/GoalInput';
 
 export default function App() {
   const [goals, setGoals] = useState([]);
+  const [isAddMode, setIsAddMode] = useState(false);
 
   const onPressAdd = goalItem => {
-    setGoals(R.append({key: Math.random().toString(), value: goalItem}, goals))
+    setGoals(R.append({key: Math.random().toString(), value: goalItem}, goals));
+    setIsAddMode(false);
   }
 
   const onRemoveHandler = goalId => {
@@ -22,7 +24,8 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <GoalInput onPress={onPressAdd} />
+      <Button title="Add new Goal" onPress={() => setIsAddMode(true)}/>
+      <GoalInput onPress={onPressAdd} visible={isAddMode} />
       <FlatList data={goals}
         renderItem={itemData =><GoalItem onDelete={onRemoveHandler} item={itemData.item} />} 
         />
